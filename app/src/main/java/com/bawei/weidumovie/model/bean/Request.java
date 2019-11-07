@@ -16,3 +16,4 @@ public class Request<T> {
     public String status;
     public T result;
 }
+

@@ -38,9 +38,9 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        SharedPreferences sp = getSharedPreferences("name",MODE_PRIVATE);
-        String Email = sp.getString("Email","");
-        String Mm = sp.getString("Mm","");
+        SharedPreferences sp = getSharedPreferences("name", MODE_PRIVATE);
+        String Email = sp.getString("Email", "");
+        String Mm = sp.getString("Mm", "");
 
         textYx.setText(Email);
         textPwd.setText(Mm);
@@ -49,13 +49,13 @@ public class LoginActivity extends BaseActivity {
     }
 
     @OnClick(R.id.text_zhuce)
-    public void zhuce(){
-        Intent intent = new Intent(LoginActivity.this,ZhuCeActivity.class);
+    public void zhuce() {
+        Intent intent = new Intent(LoginActivity.this, ZhuCeActivity.class);
         startActivity(intent);
     }
 
     @OnClick(R.id.text_loig)
-    public  void  login(){
+    public void login() {
 
         String yx = textYx.getText().toString();
         String pwd = textPwd.getText().toString();
@@ -63,14 +63,14 @@ public class LoginActivity extends BaseActivity {
         String pwds = Base64.encode(pwd.getBytes());
         String mm = EncryptUtil.encrypt(pwds);
 
-        loginPresenter.Request(yx,mm);
+        loginPresenter.Request(yx, mm);
 
     }
+
     @Override
     protected int LayoutId() {
         return R.layout.activity_login;
     }
-
 
 
     private class LoginPresen implements DataCall<Logins> {
@@ -78,7 +78,7 @@ public class LoginActivity extends BaseActivity {
         public void Success(Logins data) {
             Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
 

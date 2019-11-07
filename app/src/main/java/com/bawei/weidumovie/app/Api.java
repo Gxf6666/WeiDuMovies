@@ -30,4 +30,5 @@ public interface Api {
     @FormUrlEncoded
     @POST("user/v2/sendOutEmailCode")
     Observable<Request> sendOutEmailCode(@Field("email")String email);
+
 }

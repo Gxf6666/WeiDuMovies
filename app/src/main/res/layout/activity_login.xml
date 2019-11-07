@@ -27,6 +27,7 @@
 
         <EditText
             android:layout_width="312dp"
+            android:id="@+id/text_yx"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="@drawable/translucent"
@@ -36,7 +37,6 @@
             android:textColorHint="#999999"
             android:theme="@style/MyEditText"
             android:textColor="#fff"
-            android:id="@+id/text_yx"
             />
 
         <EditText

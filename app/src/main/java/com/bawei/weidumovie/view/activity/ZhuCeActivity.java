@@ -1,5 +1,6 @@
 package com.bawei.weidumovie.view.activity;
 
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -42,29 +43,32 @@ public class ZhuCeActivity extends BaseActivity {
         registerPresenter = new RegisterPresenter(new RegisterPresen());
 
     }
+
     @OnClick(R.id.text_yanzheng)
-      public void Yanzheng(){
-        String  Email = textYx1.getText().toString();
+    public void Yanzheng() {
+        String Email = textYx1.getText().toString();
         emailCodePresenter = new EmailCodePresenter(new EmailCode());
-        emailCodePresenter.Request((String)Email);
+        emailCodePresenter.Request((String) Email);
     }
+
     @OnClick(R.id.text_zhuce1)
-    public void ZhuCe(){
-      String  Name = textNc.getText().toString();
-      String  Email = textYx1.getText().toString();
-      String  Pwd = textPwd1.getText().toString();
-      String  yanzheng = textYz.getText().toString();
+    public void ZhuCe() {
+        String Name = textNc.getText().toString();
+        String Email = textYx1.getText().toString();
+        String Pwd = textPwd1.getText().toString();
+        String yanzheng = textYz.getText().toString();
 
         String Pwds = Base64.encode(Pwd.getBytes());
         String Mm = EncryptUtil.encrypt(Pwds);
-        SharedPreferences sp =  getSharedPreferences("name",MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("name", MODE_PRIVATE);
         edit = sp.edit();
-        edit.putString("Email",Email);
-        edit.putString("Mm",Pwd);
+        edit.putString("Email", Email);
+        edit.putString("Mm", Pwd);
         edit.commit();
 
-        registerPresenter.Request(Name,Mm,Email,yanzheng);
+        registerPresenter.Request(Name, Mm, Email, yanzheng);
     }
+
     @Override
     protected int LayoutId() {
         return R.layout.activity_zhu_ce;
@@ -74,7 +78,7 @@ public class ZhuCeActivity extends BaseActivity {
         @Override
         public void Success(Request data) {
 //             Toast.makeText(ZhuCeActivity.this, data.message, Toast.LENGTH_SHORT).show();
-             finish();
+            finish();
         }
 
         @Override
@@ -95,3 +99,4 @@ public class ZhuCeActivity extends BaseActivity {
         }
     }
 }
+
