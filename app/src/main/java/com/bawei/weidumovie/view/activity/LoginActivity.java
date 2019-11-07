@@ -1,6 +1,7 @@
 package com.bawei.weidumovie.view.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity {
 
@@ -30,16 +32,30 @@ public class LoginActivity extends BaseActivity {
     EditText textPwd;
     @BindView(R.id.text_wjpwd)
     Button textWjpwd;
-    @BindView(R.id.text_zhuce)
-    TextView textZhuce;
-    @BindView(R.id.text_loig)
-    Button textLoig;
     @BindView(R.id.text_weixin)
     ImageButton textWeixin;
     private LoginPresenter loginPresenter;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        SharedPreferences sp = getSharedPreferences("name",MODE_PRIVATE);
+        String Email = sp.getString("Email","");
+        String Mm = sp.getString("Mm","");
+
+        textYx.setText(Email);
+        textPwd.setText(Mm);
+        loginPresenter = new LoginPresenter(new LoginPresen());
+
+    }
+
+    @OnClick(R.id.text_zhuce)
+    public void zhuce(){
+        Intent intent = new Intent(LoginActivity.this,ZhuCeActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.text_loig)
+    public  void  login(){
 
         String yx = textYx.getText().toString();
         String pwd = textPwd.getText().toString();
@@ -47,25 +63,19 @@ public class LoginActivity extends BaseActivity {
         String pwds = Base64.encode(pwd.getBytes());
         String mm = EncryptUtil.encrypt(pwds);
 
-        loginPresenter = new LoginPresenter(new LoginPresen());
         loginPresenter.Request(yx,mm);
-    }
 
+    }
     @Override
     protected int LayoutId() {
         return R.layout.activity_login;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
-    private class LoginPresen implements DataCall<List<Logins>> {
+
+    private class LoginPresen implements DataCall<Logins> {
         @Override
-        public void Success(List<Logins> data) {
+        public void Success(Logins data) {
             Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(LoginActivity.this,MainActivity.class);

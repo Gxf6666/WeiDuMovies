@@ -35,6 +35,7 @@
             android:paddingRight="24dp"
             android:textColorHint="#999999"
             android:theme="@style/MyEditText"
+            android:textColor="#fff"
             android:id="@+id/text_yx"
             />
 
@@ -50,6 +51,7 @@
             android:textColorHint="#999999"
             android:theme="@style/MyEditText"
             android:id="@+id/text_pwd"
+            android:textColor="#fff"
             />
 
         <Button
@@ -57,7 +59,7 @@
             android:layout_height="44dp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="60dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="146dp"
             android:background="@drawable/translucent1"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
@@ -76,7 +78,7 @@
             android:textColor="#999999"
             android:layout_marginTop="110dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="146dp"
             />
         
         <Button

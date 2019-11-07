@@ -7,7 +7,6 @@ import com.bawei.weidumovie.R;
 
 public class MainActivity extends BaseActivity {
 
-
     @Override
     protected void initView(Bundle savedInstanceState) {
 

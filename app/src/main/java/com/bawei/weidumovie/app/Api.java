@@ -20,5 +20,14 @@ public interface Api {
 
     @FormUrlEncoded
     @POST("user/v2/login")
-    Observable<Request<List<Logins>>>login(@Field("email")String email,@Field("pwd")String pwd);
+    Observable<Request<Logins>>login(@Field("email")String email,@Field("pwd")String pwd);
+
+    @FormUrlEncoded
+    @POST("user/v2/register")
+    Observable<Request> register(@Field("nickName")String nickName,@Field("pwd")String pwd,
+                                 @Field("email")String email,@Field("code")String code);
+
+    @FormUrlEncoded
+    @POST("user/v2/sendOutEmailCode")
+    Observable<Request> sendOutEmailCode(@Field("email")String email);
 }
