@@ -86,9 +86,7 @@ public class FilmFragment extends Fragment {
         //热门电影适配器
         homeMAdapter2= new HomeMAdapter(getContext());
         recycler_remen.setAdapter(homeMAdapter2);
-
-
-
+        //大图片
         LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(getContext());
         linearLayoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv_remen1.setLayoutManager(linearLayoutManager3);

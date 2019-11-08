@@ -4,6 +4,9 @@ import com.bawei.weidumovie.model.bean.Banners;
 import com.bawei.weidumovie.model.bean.Home;
 import com.bawei.weidumovie.model.bean.HomeOne;
 import com.bawei.weidumovie.model.bean.Logins;
+import com.bawei.weidumovie.model.bean.Nearby;
+import com.bawei.weidumovie.model.bean.QuYu;
+import com.bawei.weidumovie.model.bean.Recommend;
 import com.bawei.weidumovie.model.bean.Request;
 
 import java.util.List;
@@ -48,4 +51,15 @@ public interface Api {
 
     @GET("movie/v2/findHotMovieList")
     Observable<Request<List<Home>>>findHotMovieList(@Query("page")int page,@Query("count")int count);
+
+    @GET("cinema/v1/findRecommendCinemas")
+    Observable<Request<List<Recommend>>> findRecommendCinemas(@Query("page")int page,@Query("count")int count);
+
+    @GET("cinema/v1/findNearbyCinemas")
+    Observable<Request<List<Nearby>>>findNearbyCinemas(@Query("page")int page,@Query("count")int count);
+
+
+    @GET("tool/v2/findRegionList")
+    Observable<Request<List<QuYu>>>findRegionList();
+
 }
