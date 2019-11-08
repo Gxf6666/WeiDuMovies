@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bawei.weidumovie.R;
@@ -31,8 +29,11 @@ import com.bawei.weidumovie.view.consion.DataCall;
 import com.bumptech.glide.Glide;
 import com.stx.xhb.xbanner.XBanner;
 
-
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * <p>文件描述：<p>
@@ -41,6 +42,9 @@ import java.util.List;
  * <p>更改时间：2019/11/7<p>
  */
 public class FilmFragment extends Fragment {
+    @BindView(R.id.location)
+    TextView mLocation;
+    Unbinder unbinder;
     private XBanner xbanner;
     private RecyclerView recycler_reying;
     private RecyclerView recycler_shangying;
@@ -51,7 +55,7 @@ public class FilmFragment extends Fragment {
     private RecyclerView recycler_remen;
     private BannerPresente bannerPresente;
     private HomePresenter homePresenter;
-    private HomeMAdapter homeMAdapter,homeMAdapter2;
+    private HomeMAdapter homeMAdapter, homeMAdapter2;
     private HomeMAdapter1 homeMAdapter1;
     private HomePresenter1 homePresenter1;
     private HomePresenter2 homePresenter2;
@@ -62,6 +66,13 @@ public class FilmFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_film, null);
         initView(view);
+
+        mLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         //正在热映
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -84,9 +95,8 @@ public class FilmFragment extends Fragment {
         linearLayoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
         recycler_remen.setLayoutManager(linearLayoutManager2);
         //热门电影适配器
-        homeMAdapter2= new HomeMAdapter(getContext());
+        homeMAdapter2 = new HomeMAdapter(getContext());
         recycler_remen.setAdapter(homeMAdapter2);
-
 
 
         LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(getContext());
@@ -99,13 +109,14 @@ public class FilmFragment extends Fragment {
         bannerPresente.Request();
         //正在热映Presenter
         homePresenter = new HomePresenter(new HomePresen());
-        homePresenter.Request(1,5);
+        homePresenter.Request(1, 5);
         //即将上映Presenter
         homePresenter1 = new HomePresenter1(new HomePresenOne());
-        homePresenter1.Request(1,4);
+        homePresenter1.Request(1, 4);
         //热门电影Presenter
         homePresenter2 = new HomePresenter2(new HomePresenTwo());
-        homePresenter2.Request(1,5);
+        homePresenter2.Request(1, 5);
+        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
@@ -121,12 +132,18 @@ public class FilmFragment extends Fragment {
 
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
 
     private class BannersPresen implements DataCall<List<Banners>> {
         @Override
         public void Success(final List<Banners> data) {
 
-            xbanner.setData(data,null);
+            xbanner.setData(data, null);
             xbanner.setmAdapter(new XBanner.XBannerAdapter() {
                 @Override
                 public void loadBanner(XBanner banner, View view, int position) {
@@ -140,17 +157,17 @@ public class FilmFragment extends Fragment {
 
         }
     }
+
     /**
-     *
      * 正在热映
      */
 
     private class HomePresen implements DataCall<List<Home>> {
         @Override
         public void Success(List<Home> data) {
-                homeMAdapter.addAll(data);
+            homeMAdapter.addAll(data);
 
-                homeMAdapter.notifyDataSetChanged();
+            homeMAdapter.notifyDataSetChanged();
         }
 
         @Override
@@ -158,15 +175,16 @@ public class FilmFragment extends Fragment {
 
         }
     }
+
     /**
      * 即将上映
      */
     private class HomePresenOne implements DataCall<List<HomeOne>> {
         @Override
         public void Success(List<HomeOne> data) {
-                homeMAdapter1.addAllOne(data);
+            homeMAdapter1.addAllOne(data);
 
-                homeMAdapter1.notifyDataSetChanged();
+            homeMAdapter1.notifyDataSetChanged();
 
         }
 
@@ -175,6 +193,7 @@ public class FilmFragment extends Fragment {
 
         }
     }
+
     /**
      * 即将上映
      */
@@ -192,4 +211,5 @@ public class FilmFragment extends Fragment {
 
         }
     }
+
 }
