@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.baidu.location.BDLocationListener;
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.model.bean.Banners;
 import com.bawei.weidumovie.model.bean.Home;
@@ -22,6 +23,7 @@ import com.bawei.weidumovie.presenter.BannerPresente;
 import com.bawei.weidumovie.presenter.HomePresenter;
 import com.bawei.weidumovie.presenter.HomePresenter1;
 import com.bawei.weidumovie.presenter.HomePresenter2;
+import com.bawei.weidumovie.testlocation.BDLocationUtils;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter1;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter2;
@@ -42,7 +44,6 @@ import butterknife.Unbinder;
  * <p>更改时间：2019/11/7<p>
  */
 public class FilmFragment extends Fragment {
-    @BindView(R.id.location)
     TextView mLocation;
     Unbinder unbinder;
     private XBanner xbanner;
@@ -60,6 +61,8 @@ public class FilmFragment extends Fragment {
     private HomePresenter1 homePresenter1;
     private HomePresenter2 homePresenter2;
     private HomeMAdapter2 homeMAdapter3;
+    private Boolean locationboolean=true;
+    private BDLocationUtils bdLocationUtils;
 
     @Nullable
     @Override
@@ -70,7 +73,15 @@ public class FilmFragment extends Fragment {
         mLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (locationboolean){
+                    bdLocationUtils = new BDLocationUtils(getContext());
+                    bdLocationUtils.doLocation();
+                    bdLocationUtils.mLocationClient.start();
+                    locationboolean=false;
+                }else {
+                    bdLocationUtils.mLocationClient.stop();
+                    locationboolean=true;
+                }
             }
         });
 
@@ -129,7 +140,7 @@ public class FilmFragment extends Fragment {
         popularscore_tv = (TextView) view.findViewById(R.id.popularscore_tv);
         releasedmovie_bt = (Button) view.findViewById(R.id.releasedmovie_bt);
         recycler_remen = (RecyclerView) view.findViewById(R.id.recycler_remen);
-
+        mLocation=(TextView)view.findViewById(R.id.location);
     }
 
     @Override

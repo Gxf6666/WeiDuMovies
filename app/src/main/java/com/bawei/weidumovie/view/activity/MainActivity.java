@@ -39,7 +39,6 @@ public class MainActivity extends BaseActivity {
         mGuideclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
                 finish();
                 timer.cancel();

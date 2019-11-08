@@ -185,7 +185,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_120"
                     android:id="@+id/rv_remen1"
-                    android:scaleType="fitXY"
                     />
                 <LinearLayout
                     android:layout_alignParentBottom="true"
@@ -207,19 +206,7 @@
                     android:layout_marginLeft="@dimen/dp_10"
                     />
                 </LinearLayout>
-                <Button
-                    android:layout_width="@dimen/dp_45"
-                    android:background="#e8185e"
-                    android:text="购票"
-                    android:layout_alignParentRight="true"
-                    android:textColor="#fff"
-                    android:gravity="center"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center"
-                    android:layout_height="@dimen/dp_20"
-                    android:id="@+id/releasedmovie_bt"
-                    android:layout_marginRight="@dimen/dp_14"
-                    />
+
             </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
