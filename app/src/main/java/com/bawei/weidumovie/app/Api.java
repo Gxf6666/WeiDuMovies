@@ -39,10 +39,13 @@ public interface Api {
     @GET("tool/v2/banner")
     Observable<Request<List<Banners>>>banner();
 
-    @GET("movie/v2/findHotMovieList")
-    Observable<Request<List<Home>>>findHotMovieList(@Query("page")int page,@Query("count")int count);
+    @GET("movie/v2/findReleaseMovieList")
+    Observable<Request<List<Home>>>findReleaseMovieList(@Query("page")int page,@Query("count")int count);
 
     @GET("movie/v2/findComingSoonMovieList")
     Observable<Request<List<HomeOne>>>findComingSoonMovieList(@Query("page")int page,@Query("count")int count);
 
+
+    @GET("movie/v2/findHotMovieList")
+    Observable<Request<List<Home>>>findHotMovieList(@Query("page")int page,@Query("count")int count);
 }

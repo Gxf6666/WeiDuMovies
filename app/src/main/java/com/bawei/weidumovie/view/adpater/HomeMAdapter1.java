@@ -42,7 +42,7 @@ public class HomeMAdapter1 extends RecyclerView.Adapter<HomeMAdapter1.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_releasedmovie, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_home1, viewGroup, false);
         return new MyViewHolder(view);
     }
 

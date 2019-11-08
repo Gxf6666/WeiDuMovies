@@ -18,6 +18,6 @@ public class HomePresenter extends BasePresenter {
 
     @Override
     protected Observable GetModel(Api api, Object... args) {
-        return api.findHotMovieList((int)args[0],(int)args[1]);
+        return api.findReleaseMovieList((int)args[0],(int)args[1]);
     }
 }
