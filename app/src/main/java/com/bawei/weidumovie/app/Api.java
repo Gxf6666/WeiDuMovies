@@ -1,5 +1,8 @@
 package com.bawei.weidumovie.app;
 
+import com.bawei.weidumovie.model.bean.Banners;
+import com.bawei.weidumovie.model.bean.Home;
+import com.bawei.weidumovie.model.bean.HomeOne;
 import com.bawei.weidumovie.model.bean.Logins;
 import com.bawei.weidumovie.model.bean.Request;
 
@@ -8,7 +11,9 @@ import java.util.List;
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * <p>文件描述：<p>
@@ -30,5 +35,14 @@ public interface Api {
     @FormUrlEncoded
     @POST("user/v2/sendOutEmailCode")
     Observable<Request> sendOutEmailCode(@Field("email")String email);
+
+    @GET("tool/v2/banner")
+    Observable<Request<List<Banners>>>banner();
+
+    @GET("movie/v2/findHotMovieList")
+    Observable<Request<List<Home>>>findHotMovieList(@Query("page")int page,@Query("count")int count);
+
+    @GET("movie/v2/findComingSoonMovieList")
+    Observable<Request<List<HomeOne>>>findComingSoonMovieList(@Query("page")int page,@Query("count")int count);
 
 }

@@ -1,9 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.activity.HomeActivity">
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="@dimen/dp_360"
+        android:layout_height="match_parent">
+    </FrameLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DFE0E7">
+
+        <com.kyle.radiogrouplib.NestedRadioGroup
+            android:id="@+id/rg_group"
+            android:layout_width="@dimen/dp_360"
+            android:layout_height="@dimen/dp_60"
+            android:background="#1c2243">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_movies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:background="@drawable/home_btn"
+                    android:paddingLeft="@dimen/dp_60"
+                    android:paddingTop="@dimen/dp_9"
+                    android:paddingRight="@dimen/dp_20"
+                    android:paddingBottom="@dimen/dp_9"
+                    android:text="电影"
+                    android:textColor="#e8185e"
+                    android:textSize="@dimen/sp_14" />
+
+                <com.kyle.radiogrouplib.NestedRadioLayout
+
+                    android:id="@+id/rb_movies"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_34"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:background="@drawable/home_selector"
+                    android:button="@null"
+                    android:checked="true" />
+                <TextView
+                    android:id="@+id/tv_cinema"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_130"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:background="@drawable/home_btn"
+                    android:paddingLeft="@dimen/dp_60"
+                    android:paddingTop="@dimen/dp_9"
+                    android:paddingRight="@dimen/dp_20"
+                    android:paddingBottom="@dimen/dp_9"
+                    android:text="影院"
+                    android:textColor="#e8185e"
+                    android:textSize="@dimen/sp_14"
+                    android:visibility="invisible" />
+
+                <com.kyle.radiogrouplib.NestedRadioLayout
+                    android:id="@+id/rb_cinema"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_150"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:background="@drawable/cinema_selector"
+                    android:button="@null" />
+
+                <TextView
+                    android:id="@+id/tv_mine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_248"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:background="@drawable/home_btn"
+                    android:paddingLeft="@dimen/dp_60"
+                    android:paddingTop="@dimen/dp_9"
+                    android:paddingRight="@dimen/dp_20"
+                    android:paddingBottom="@dimen/dp_9"
+                    android:text="我的"
+                    android:textColor="#e8185e"
+                    android:textSize="@dimen/sp_14"
+                    android:visibility="invisible" />
+
+                <com.kyle.radiogrouplib.NestedRadioLayout
+                    android:id="@+id/rb_mine"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_268"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:background="@drawable/mine_selector"
+                    android:button="@null" />
+            </RelativeLayout>
+        </com.kyle.radiogrouplib.NestedRadioGroup>
+    </RelativeLayout>
+</RelativeLayout>

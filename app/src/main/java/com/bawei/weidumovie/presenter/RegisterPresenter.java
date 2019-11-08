@@ -17,7 +17,7 @@ public class RegisterPresenter extends BasePresenter {
     }
 
     @Override
-    Observable GetModel(Api api, Object... args) {
+    protected Observable GetModel(Api api, Object... args) {
         return api.register((String)args[0],(String)args[1],(String)args[2],(String)args[3]);
     }
 }

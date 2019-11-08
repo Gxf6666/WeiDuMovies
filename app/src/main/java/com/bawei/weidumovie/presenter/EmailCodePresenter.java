@@ -17,7 +17,7 @@ public class EmailCodePresenter extends BasePresenter {
     }
 
     @Override
-    Observable GetModel(Api api, Object... args) {
+    protected Observable GetModel(Api api, Object... args) {
         return api.sendOutEmailCode((String)args[0]);
     }
 }

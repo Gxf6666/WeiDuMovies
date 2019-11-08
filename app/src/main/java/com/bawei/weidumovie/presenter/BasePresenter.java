@@ -47,5 +47,5 @@ public abstract class BasePresenter {
                 });
     }
 
-    abstract Observable GetModel(Api api, Object... args);
+    protected abstract Observable GetModel(Api api, Object... args);
 }

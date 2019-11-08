@@ -60,6 +60,7 @@ public class ZhuCeActivity extends BaseActivity {
 
         String Pwds = Base64.encode(Pwd.getBytes());
         String Mm = EncryptUtil.encrypt(Pwds);
+
         SharedPreferences sp = getSharedPreferences("name", MODE_PRIVATE);
         edit = sp.edit();
         edit.putString("Email", Email);

@@ -18,7 +18,7 @@ public class LoginPresenter extends BasePresenter {
     }
 
     @Override
-    Observable GetModel(Api api, Object... args) {
+    protected Observable GetModel(Api api, Object... args) {
         return api.login((String)args[0],(String)args[1]);
     }
 }
