@@ -12,9 +12,12 @@ import android.view.ViewGroup;
 
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.model.bean.QuYu;
+import com.bawei.weidumovie.model.bean.QuYuQuery;
 import com.bawei.weidumovie.model.bean.Request;
 import com.bawei.weidumovie.presenter.QuYuPresenter;
+import com.bawei.weidumovie.presenter.QuYuQueryPresenter;
 import com.bawei.weidumovie.view.adpater.QuYuMAdapter;
+import com.bawei.weidumovie.view.adpater.QuYuQueryMAdapter;
 import com.bawei.weidumovie.view.consion.DataCall;
 
 import java.util.List;
@@ -30,6 +33,8 @@ public class Fragment_Region extends Fragment {
     private RecyclerView rlv3;
     private QuYuPresenter quYuPresenter;
     private QuYuMAdapter quYuMAdapter;
+    private QuYuQueryPresenter quYuQueryPresenter;
+    private QuYuQueryMAdapter quYuQueryMAdapter;
 
     @Nullable
     @Override
@@ -45,6 +50,21 @@ public class Fragment_Region extends Fragment {
         rlv2.setAdapter(quYuMAdapter);
         quYuPresenter = new QuYuPresenter(new QuYuPresen());
         quYuPresenter.Request();
+        quYuMAdapter.setIsWork(new QuYuMAdapter.IsWork() {
+            @Override
+            public void SetId(int Id) {
+                quYuQueryPresenter.Request(Id);
+
+            }
+        });
+
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
+        linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
+        rlv3.setLayoutManager(linearLayoutManager1);
+        quYuQueryMAdapter = new QuYuQueryMAdapter(getContext());
+        rlv3.setAdapter(quYuQueryMAdapter);
+        quYuQueryPresenter = new QuYuQueryPresenter(new QuYuQueryPresen());
+
         return view;
     }
 
@@ -59,6 +79,22 @@ public class Fragment_Region extends Fragment {
             quYuMAdapter.addAll(data);
 
             quYuMAdapter.notifyDataSetChanged();
+
+        }
+
+        @Override
+        public void Error(Request request) {
+
+        }
+    }
+
+    private class QuYuQueryPresen implements DataCall<List<QuYuQuery>> {
+        @Override
+        public void Success(List<QuYuQuery> data) {
+                quYuQueryMAdapter.clear();
+                quYuQueryMAdapter.addAll(data);
+
+                quYuQueryMAdapter.notifyDataSetChanged();
         }
 
         @Override

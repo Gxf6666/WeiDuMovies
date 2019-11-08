@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
+import com.baidu.location.BDLocationListener;
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.model.bean.Banners;
 import com.bawei.weidumovie.model.bean.Home;
@@ -23,7 +23,7 @@ import com.bawei.weidumovie.presenter.BannerPresente;
 import com.bawei.weidumovie.presenter.HomePresenter;
 import com.bawei.weidumovie.presenter.HomePresenter1;
 import com.bawei.weidumovie.presenter.HomePresenter2;
-
+import com.bawei.weidumovie.testlocation.BDLocationUtils;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter1;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter2;
@@ -49,7 +49,7 @@ public class FilmFragment extends Fragment {
     private XBanner xbanner;
     private RecyclerView recycler_reying;
     private RecyclerView recycler_shangying;
-    private RecyclerView rv_remen1;
+    private ImageView rv_remen1;
     private TextView popularname_tv;
     private TextView popularscore_tv;
     private Button releasedmovie_bt;
@@ -62,6 +62,7 @@ public class FilmFragment extends Fragment {
     private HomePresenter2 homePresenter2;
     private HomeMAdapter2 homeMAdapter3;
     private Boolean locationboolean=true;
+    private BDLocationUtils bdLocationUtils;
 
     @Nullable
     @Override
@@ -73,10 +74,12 @@ public class FilmFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (locationboolean){
-
+                   bdLocationUtils = new BDLocationUtils(getContext());
+                   bdLocationUtils.doLocation();
+                   bdLocationUtils.mLocationClient.start();
                     locationboolean=false;
                 }else {
-
+                    bdLocationUtils.mLocationClient.stop();
                     locationboolean=true;
                 }
             }
@@ -107,12 +110,6 @@ public class FilmFragment extends Fragment {
         recycler_remen.setAdapter(homeMAdapter2);
 
 
-
-        LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(getContext());
-        linearLayoutManager3.setOrientation(LinearLayoutManager.HORIZONTAL);
-        rv_remen1.setLayoutManager(linearLayoutManager3);
-        homeMAdapter3 = new HomeMAdapter2(getContext());
-        rv_remen1.setAdapter(homeMAdapter2);
         //Banner轮播
         bannerPresente = new BannerPresente(new BannersPresen());
         bannerPresente.Request();
@@ -204,15 +201,14 @@ public class FilmFragment extends Fragment {
     }
 
     /**
-     * 即将上映
+     * 热门电影
      */
     private class HomePresenTwo implements DataCall<List<Home>> {
         @Override
         public void Success(List<Home> data) {
             homeMAdapter2.addAll(data);
-            homeMAdapter3.addAll(data);
             homeMAdapter2.notifyDataSetChanged();
-            homeMAdapter3.notifyDataSetChanged();
+            Glide.with(getActivity()).load(data.get(0).imageUrl).into(rv_remen1);
         }
 
         @Override
