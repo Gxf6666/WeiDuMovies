@@ -133,10 +133,11 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            >
+
            <android.support.v7.widget.RecyclerView
                android:id="@+id/recycler_shangying"
                android:layout_width="match_parent"
-               android:layout_height="@dimen/dp_300" />
+               android:layout_height="match_parent" />
        </LinearLayout>
 
         <LinearLayout
@@ -181,10 +182,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_120"
                 >
-                <android.support.v7.widget.RecyclerView
+                <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_120"
                     android:id="@+id/rv_remen1"
+                    android:scaleType="fitXY"
+                    />
+
+                <Button
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_20"
+                    android:background="#D60C51"
+                    android:text="购买"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_20"
                     />
                 <LinearLayout
                     android:layout_alignParentBottom="true"

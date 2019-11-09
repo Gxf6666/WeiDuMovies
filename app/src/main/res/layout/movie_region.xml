@@ -2,19 +2,21 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9800"
+    android:background="#141931"
     android:orientation="horizontal"
     >
  <android.support.v7.widget.RecyclerView
      android:layout_width="@dimen/dp_130"
      android:layout_height="match_parent"
      android:id="@+id/rlv2"
+     android:background="#0E1B5F"
      >
 
  </android.support.v7.widget.RecyclerView>
     <android.support.v7.widget.RecyclerView
-        android:layout_width="@dimen/dp_100"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rlv3"
+        android:background="#141931"
         ></android.support.v7.widget.RecyclerView>
 </LinearLayout>

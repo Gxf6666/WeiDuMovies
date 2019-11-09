@@ -6,6 +6,7 @@ import com.bawei.weidumovie.model.bean.HomeOne;
 import com.bawei.weidumovie.model.bean.Logins;
 import com.bawei.weidumovie.model.bean.Nearby;
 import com.bawei.weidumovie.model.bean.QuYu;
+import com.bawei.weidumovie.model.bean.QuYuQuery;
 import com.bawei.weidumovie.model.bean.Recommend;
 import com.bawei.weidumovie.model.bean.Request;
 
@@ -61,5 +62,8 @@ public interface Api {
 
     @GET("tool/v2/findRegionList")
     Observable<Request<List<QuYu>>>findRegionList();
+
+    @GET("cinema/v2/findCinemaByRegion")
+    Observable<Request<List<QuYuQuery>>>findCinemaByRegion(@Query("regionId")int regionId);
 
 }
