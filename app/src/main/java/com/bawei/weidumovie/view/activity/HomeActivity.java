@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.view.fragment.CinemaFragment;
 import com.bawei.weidumovie.view.fragment.FilmFragment;
+import com.bawei.weidumovie.view.fragment.ThirdlyFragment;
 import com.kyle.radiogrouplib.NestedRadioGroup;
 import com.kyle.radiogrouplib.NestedRadioLayout;
 
@@ -37,6 +38,7 @@ public class HomeActivity extends BaseActivity {
     NestedRadioGroup mRgGroup;
     private FilmFragment filmFragment;
     private CinemaFragment cinemaFragment;
+    private ThirdlyFragment thirdlyFragment;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -52,11 +54,14 @@ public class HomeActivity extends BaseActivity {
         super.onStart();
         filmFragment = new FilmFragment();
         cinemaFragment = new CinemaFragment();
+        thirdlyFragment = new ThirdlyFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.frame,filmFragment)
                 .add(R.id.frame,cinemaFragment)
+                .add(R.id.frame,thirdlyFragment)
                 .show(filmFragment)
                 .hide(cinemaFragment)
+                .hide(thirdlyFragment)
                 .commit();
         mTvMovies.setVisibility(View.VISIBLE);
     }
@@ -68,20 +73,33 @@ public class HomeActivity extends BaseActivity {
                         .beginTransaction()
                         .show(filmFragment)
                         .hide(cinemaFragment)
+                        .hide(thirdlyFragment)
                         .commit();
                 mTvMovies.setVisibility(View.VISIBLE);
                 mTvCinema.setVisibility(View.GONE);
+                mTvMine.setVisibility(View.GONE);
                 break;
             case R.id.rb_cinema:
                 getSupportFragmentManager()
                         .beginTransaction()
                         .show(cinemaFragment)
                         .hide(filmFragment)
+                        .hide(thirdlyFragment)
                         .commit();
                 mTvCinema.setVisibility(View.VISIBLE);
                 mTvMovies.setVisibility(View.GONE);
+                mTvMine.setVisibility(View.GONE);
                 break;
             case R.id.rb_mine:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .show(thirdlyFragment)
+                        .hide(filmFragment)
+                        .hide(cinemaFragment)
+                        .commit();
+                mTvMine.setVisibility(View.VISIBLE);
+                mTvCinema.setVisibility(View.GONE);
+                mTvMovies.setVisibility(View.GONE);
                 break;
         }
     }

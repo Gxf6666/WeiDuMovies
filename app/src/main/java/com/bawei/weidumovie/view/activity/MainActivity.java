@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity {
                     public void run() {
                         if (variabel != 0) {
                             variabel--;
-                            mTime.setText(variabel + "");
+                            mTime.setText(variabel + "s");
                             return;
                         } else {
                             timer.cancel();
