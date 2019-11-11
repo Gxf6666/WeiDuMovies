@@ -41,7 +41,6 @@ public class LoginActivity extends BaseActivity {
         SharedPreferences sp = getSharedPreferences("name", MODE_PRIVATE);
         String Email = sp.getString("Email", "");
         String Mm = sp.getString("Mm", "");
-
         textYx.setText(Email);
         textPwd.setText(Mm);
         loginPresenter = new LoginPresenter(new LoginPresen());

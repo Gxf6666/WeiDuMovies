@@ -19,5 +19,6 @@ public class QuYuQueryPresenter extends BasePresenter {
     @Override
     protected Observable GetModel(Api api, Object... args) {
         return api.findCinemaByRegion((int)args[0]);
+
     }
 }

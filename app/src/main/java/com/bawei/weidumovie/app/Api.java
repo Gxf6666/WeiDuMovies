@@ -1,6 +1,7 @@
 package com.bawei.weidumovie.app;
 
 import com.bawei.weidumovie.model.bean.Banners;
+import com.bawei.weidumovie.model.bean.DetailsBean;
 import com.bawei.weidumovie.model.bean.Home;
 import com.bawei.weidumovie.model.bean.HomeOne;
 import com.bawei.weidumovie.model.bean.Information;
@@ -78,4 +79,8 @@ public interface Api {
 
     @GET("cinema/v1/findCinemaInfo")
     Observable<Request<List<Information>>>findCinemaInfo(@Query("cinemaId")int cinemaId);
+
+    @GET("movie/v2/findMoviesDetail")
+    Observable<Request<DetailsBean>>findDetail(@Query("movieId")int movieId);
+
 }

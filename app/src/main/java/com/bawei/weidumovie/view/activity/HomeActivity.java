@@ -1,10 +1,11 @@
 package com.bawei.weidumovie.view.activity;
 
-import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.view.fragment.CinemaFragment;
@@ -36,6 +37,8 @@ public class HomeActivity extends BaseActivity {
     NestedRadioLayout mRbMine;
     @BindView(R.id.rg_group)
     NestedRadioGroup mRgGroup;
+    @BindView(R.id.witch)
+    RelativeLayout mSwitch;
     private FilmFragment filmFragment;
     private CinemaFragment cinemaFragment;
     private ThirdlyFragment thirdlyFragment;
@@ -46,24 +49,27 @@ public class HomeActivity extends BaseActivity {
         cinemaFragment = new CinemaFragment();
         thirdlyFragment = new ThirdlyFragment();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.frame,filmFragment)
-                .add(R.id.frame,cinemaFragment)
-                .add(R.id.frame,thirdlyFragment)
+                .add(R.id.frame, filmFragment)
+                .add(R.id.frame, cinemaFragment)
+                .add(R.id.frame, thirdlyFragment)
                 .show(filmFragment)
                 .hide(cinemaFragment)
                 .hide(thirdlyFragment)
                 .commit();
         mTvMovies.setVisibility(View.VISIBLE);
+
     }
 
     @Override
     protected int LayoutId() {
         return R.layout.activity_home;
     }
+
     @Override
     protected void onStart() {
         super.onStart();
     }
+
     @OnClick({R.id.rb_movies, R.id.rb_cinema, R.id.rb_mine})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -101,5 +107,12 @@ public class HomeActivity extends BaseActivity {
                 mTvMovies.setVisibility(View.GONE);
                 break;
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

@@ -9,10 +9,11 @@
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="@dimen/dp_360"
+        android:layout_marginBottom="@dimen/dp_60"
         android:layout_height="match_parent">
     </FrameLayout>
-
     <RelativeLayout
+        android:id="@+id/witch"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
