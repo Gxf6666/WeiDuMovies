@@ -79,8 +79,4 @@ public interface Api {
 
     @GET("cinema/v1/findCinemaInfo")
     Observable<Request<List<Information>>>findCinemaInfo(@Query("cinemaId")int cinemaId);
-
-    @GET("movie/v2/findMoviesDetail")
-    Observable<Request<DetailsBean>>findDetail(@Query("movieId")int movieId);
-
 }

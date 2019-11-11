@@ -61,7 +61,6 @@ public class RecMAdapter extends RecyclerView.Adapter<RecMAdapter.MyViewHolder> 
                 Intent intent = new Intent(context, InForActivity.class);
                 intent.putExtra("Id",Id);
                 context.startActivity(intent);
-                Toast.makeText(context, "666", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -88,13 +87,4 @@ public class RecMAdapter extends RecyclerView.Adapter<RecMAdapter.MyViewHolder> 
         }
     }
 
-    private  MyId myId;
-
-    public void setMyId(MyId myId) {
-        this.myId = myId;
-    }
-
-    public interface  MyId{
-        void ById(int Id);
-    }
 }
