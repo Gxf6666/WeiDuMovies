@@ -1,6 +1,7 @@
 package com.bawei.weidumovie.view.adpater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.model.bean.Recommend;
 import com.bawei.weidumovie.presenter.RecommendPresenter;
+import com.bawei.weidumovie.view.activity.InForActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -46,10 +49,21 @@ public class RecMAdapter extends RecyclerView.Adapter<RecMAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
         Glide.with(context).load(list.get(i).logo).into(myViewHolder.iv);
         myViewHolder.name.setText(list.get(i).name);
         myViewHolder.site.setText(list.get(i).address);
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int Id = list.get(i).id;
+                Intent intent = new Intent(context, InForActivity.class);
+                intent.putExtra("Id",Id);
+                context.startActivity(intent);
+                Toast.makeText(context, "666", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -72,5 +86,15 @@ public class RecMAdapter extends RecyclerView.Adapter<RecMAdapter.MyViewHolder> 
             name = itemView.findViewById(R.id.end_name);
             site = itemView.findViewById(R.id.end_site);
         }
+    }
+
+    private  MyId myId;
+
+    public void setMyId(MyId myId) {
+        this.myId = myId;
+    }
+
+    public interface  MyId{
+        void ById(int Id);
     }
 }

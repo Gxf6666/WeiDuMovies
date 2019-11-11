@@ -1,4 +1,4 @@
-package com.bawei.weidumovie.view.fragment1;
+package com.bawei.weidumovie.view.cinemafragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bawei.weidumovie.R;
-import com.bawei.weidumovie.model.bean.Recommend;
+import com.bawei.weidumovie.model.bean.Nearby;
 import com.bawei.weidumovie.model.bean.Request;
-import com.bawei.weidumovie.presenter.RecommendPresenter;
-import com.bawei.weidumovie.view.adpater.RecMAdapter;
+import com.bawei.weidumovie.presenter.NearbyPersenter;
+import com.bawei.weidumovie.view.adpater.NearbyMAdapter;
 import com.bawei.weidumovie.view.consion.DataCall;
 
 import java.util.List;
@@ -25,37 +25,36 @@ import java.util.List;
  * <p>创建时间：2019/11/8<p>
  * <p>更改时间：2019/11/8<p>
  */
-public class Fragment_Movie extends Fragment {
+public class Fragment_Nearby extends Fragment {
 
-    private RecyclerView rlv;
-    private RecommendPresenter recommendPresenter;
-    private RecMAdapter recMAdapter;
-
+    private RecyclerView rlv1;
+    private NearbyPersenter nearbyPersenter;
+    private NearbyMAdapter nearbyMAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.movie_recommend,null);
-        rlv = view.findViewById(R.id.rlv);
-
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.movie_nearby,null);
+        rlv1 = view.findViewById(R.id.rlv1);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        rlv.setLayoutManager(linearLayoutManager);
-        recMAdapter = new RecMAdapter(getContext());
-        rlv.setAdapter(recMAdapter);
-        recommendPresenter = new RecommendPresenter(new RecommendPresen());
-        recommendPresenter.Request(1,5);
+        rlv1.setLayoutManager(linearLayoutManager);
+
+        nearbyMAdapter = new NearbyMAdapter(getContext());
+        rlv1.setAdapter(nearbyMAdapter);
+        nearbyPersenter = new NearbyPersenter(new NearbyPersen());
+        nearbyPersenter.Request(1,5);
         return view;
 
     }
 
-    private class RecommendPresen implements DataCall<List<Recommend>> {
+    private class NearbyPersen implements DataCall<List<Nearby>> {
         @Override
-        public void Success(List<Recommend> data) {
-                recMAdapter.addAll(data);
+        public void Success(List<Nearby> data) {
+                nearbyMAdapter.addAll(data);
 
-                recMAdapter.notifyDataSetChanged();
+                nearbyMAdapter.notifyDataSetChanged();
         }
 
         @Override

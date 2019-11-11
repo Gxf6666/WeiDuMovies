@@ -1,4 +1,4 @@
-package com.bawei.weidumovie.view.fragment1;
+package com.bawei.weidumovie.view.cinemafragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

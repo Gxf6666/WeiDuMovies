@@ -42,16 +42,6 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    protected int LayoutId() {
-        return R.layout.activity_home;
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
         filmFragment = new FilmFragment();
         cinemaFragment = new CinemaFragment();
         thirdlyFragment = new ThirdlyFragment();
@@ -64,6 +54,15 @@ public class HomeActivity extends BaseActivity {
                 .hide(thirdlyFragment)
                 .commit();
         mTvMovies.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected int LayoutId() {
+        return R.layout.activity_home;
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
     @OnClick({R.id.rb_movies, R.id.rb_cinema, R.id.rb_mine})
     public void onViewClicked(View view) {

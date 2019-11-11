@@ -13,9 +13,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.bawei.weidumovie.R;
-import com.bawei.weidumovie.view.fragment1.Fragment_Movie;
-import com.bawei.weidumovie.view.fragment1.Fragment_Nearby;
-import com.bawei.weidumovie.view.fragment1.Fragment_Region;
+import com.bawei.weidumovie.view.cinemafragment.Fragment_Movie;
+import com.bawei.weidumovie.view.cinemafragment.Fragment_Nearby;
+import com.bawei.weidumovie.view.cinemafragment.Fragment_Region;
 
 import java.util.ArrayList;
 import java.util.List;

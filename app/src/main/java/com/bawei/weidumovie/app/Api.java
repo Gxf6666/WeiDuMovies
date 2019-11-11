@@ -3,6 +3,7 @@ package com.bawei.weidumovie.app;
 import com.bawei.weidumovie.model.bean.Banners;
 import com.bawei.weidumovie.model.bean.Home;
 import com.bawei.weidumovie.model.bean.HomeOne;
+import com.bawei.weidumovie.model.bean.Information;
 import com.bawei.weidumovie.model.bean.Logins;
 import com.bawei.weidumovie.model.bean.Nearby;
 import com.bawei.weidumovie.model.bean.QuYu;
@@ -27,43 +28,54 @@ import retrofit2.http.Query;
  */
 public interface Api {
 
+    //登录
     @FormUrlEncoded
     @POST("user/v2/login")
     Observable<Request<Logins>>login(@Field("email")String email,@Field("pwd")String pwd);
-
+   //注册
     @FormUrlEncoded
     @POST("user/v2/register")
     Observable<Request> register(@Field("nickName")String nickName,@Field("pwd")String pwd,
                                  @Field("email")String email,@Field("code")String code);
 
+    //获取email验证码
     @FormUrlEncoded
     @POST("user/v2/sendOutEmailCode")
     Observable<Request> sendOutEmailCode(@Field("email")String email);
 
+    //轮播
     @GET("tool/v2/banner")
     Observable<Request<List<Banners>>>banner();
 
+    //查询正在上映电影列表
     @GET("movie/v2/findReleaseMovieList")
     Observable<Request<List<Home>>>findReleaseMovieList(@Query("page")int page,@Query("count")int count);
 
+    //查询即将上映电影列表
     @GET("movie/v2/findComingSoonMovieList")
     Observable<Request<List<HomeOne>>>findComingSoonMovieList(@Query("page")int page,@Query("count")int count);
 
-
+   //查询热门电影列表
     @GET("movie/v2/findHotMovieList")
     Observable<Request<List<Home>>>findHotMovieList(@Query("page")int page,@Query("count")int count);
 
+    //查询推荐影院信息
     @GET("cinema/v1/findRecommendCinemas")
     Observable<Request<List<Recommend>>> findRecommendCinemas(@Query("page")int page,@Query("count")int count);
 
+    //查询附近影院
     @GET("cinema/v1/findNearbyCinemas")
     Observable<Request<List<Nearby>>>findNearbyCinemas(@Query("page")int page,@Query("count")int count);
 
-
+    //查询区域列表
     @GET("tool/v2/findRegionList")
     Observable<Request<List<QuYu>>>findRegionList();
 
+    //根据区域查询影院
     @GET("cinema/v2/findCinemaByRegion")
     Observable<Request<List<QuYuQuery>>>findCinemaByRegion(@Query("regionId")int regionId);
 
+
+    @GET("cinema/v1/findCinemaInfo")
+    Observable<Request<List<Information>>>findCinemaInfo(@Query("cinemaId")int cinemaId);
 }

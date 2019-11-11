@@ -157,7 +157,6 @@ public class FilmFragment extends Fragment {
                 }
             });
         }
-
         @Override
         public void Error(Request request) {
 
