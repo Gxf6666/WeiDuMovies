@@ -1,8 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D81212"
+    android:background="#141931"
     >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_21"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginLeft="19dp"
+                android:id="@+id/tv_dw"
+                android:src="@drawable/icon_location"
+                android:layout_marginTop="@dimen/dp_50"
+                />
+            <TextView
+                android:layout_width="@dimen/dp_192"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_40"
+                android:text="666"
+                android:id="@+id/movie_site"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_marginTop="@dimen/dp_50"
+                />
+            <ImageView
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_21"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginLeft="19dp"
+                android:src="@drawable/dianhua"
+                android:layout_below="@id/tv_dw"
+                android:layout_marginTop="@dimen/dp_30"
+                />
+            <TextView
+                android:layout_width="@dimen/dp_192"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_40"
+                android:text="666"
+                android:id="@+id/movie_phone"
+                android:layout_below="@id/movie_site"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_marginTop="@dimen/dp_30"
+                />
+            <TextView
+                android:layout_width="@dimen/dp_192"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_19"
+                android:text="乘车路线"
+                android:layout_below="@id/movie_phone"
+                android:textColor="#fff"
+                android:id="@+id/movie_path"
+                android:textSize="18sp"
+                android:layout_marginTop="@dimen/dp_30"
+                />
 
-</LinearLayout>
+
+            <TextView
+                android:layout_width="@dimen/dp_321"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_19"
+                android:text="666"
+                android:layout_below="@id/movie_path"
+                android:textColor="#fff"
+                android:id="@+id/movie_path1"
+                android:textSize="18sp"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package com.bawei.weidumovie.view.adpater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.model.bean.QuYuQuery;
+import com.bawei.weidumovie.view.activity.InForActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +46,18 @@ public class QuYuQueryMAdapter extends RecyclerView.Adapter<QuYuQueryMAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
         myViewHolder.quyu.setText(list.get(i).name);
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int Id = list.get(i).id;
+                Intent intent = new Intent(context, InForActivity.class);
+                intent.putExtra("Id",Id);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -54,15 +54,7 @@ public class RecMAdapter extends RecyclerView.Adapter<RecMAdapter.MyViewHolder> 
         myViewHolder.name.setText(list.get(i).name);
         myViewHolder.site.setText(list.get(i).address);
 
-        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int Id = list.get(i).id;
-                Intent intent = new Intent(context, InForActivity.class);
-                intent.putExtra("Id",Id);
-                context.startActivity(intent);
-            }
-        });
+
     }
 
 
