@@ -1,6 +1,7 @@
 package com.bawei.weidumovie.view.cinemafragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.model.bean.QuYu;
@@ -31,11 +33,12 @@ import java.util.List;
 public class Fragment_Region extends Fragment {
     private RecyclerView rlv2;
     private RecyclerView rlv3;
+    private ProgressBar pb;
     private QuYuPresenter quYuPresenter;
     private QuYuMAdapter quYuMAdapter;
     private QuYuQueryPresenter quYuQueryPresenter;
     private QuYuQueryMAdapter quYuQueryMAdapter;
-
+    private Boolean b=true;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,9 +55,19 @@ public class Fragment_Region extends Fragment {
         quYuPresenter.Request();
         quYuMAdapter.setIsWork(new QuYuMAdapter.IsWork() {
             @Override
-            public void SetId(int Id) {
-                quYuQueryPresenter.Request(Id);
-
+            public void SetId(final int Id) {
+                if (b){
+                    b=false;
+                    pb.setVisibility(View.VISIBLE);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            quYuQueryPresenter.Request(Id);
+                            pb.setVisibility(View.GONE);
+                            b=true;
+                        }
+                    }, 2000);
+                }
             }
         });
 
@@ -71,6 +84,7 @@ public class Fragment_Region extends Fragment {
     private void initView(View view) {
         rlv2 = (RecyclerView) view.findViewById(R.id.rlv2);
         rlv3 = (RecyclerView) view.findViewById(R.id.rlv3);
+        pb =  view.findViewById(R.id.pb);
     }
 
     private class QuYuPresen implements DataCall<List<QuYu>> {

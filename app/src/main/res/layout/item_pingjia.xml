@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#141931"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_155"
+        >
+        <ImageView
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_70"
+            android:src="@drawable/ic_01"
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/pj_iv"
+            android:layout_marginLeft="@dimen/dp_30"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_35"
+            android:layout_toRightOf="@id/pj_iv"
+            android:text="6666"
+            android:id="@+id/pj_tv"
+            android:textColor="#fff" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6666"
+            android:textColor="#fff"
+            android:id="@+id/pj_time"
+            android:layout_marginTop="@dimen/dp_35"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_30"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pj_iv"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="6666"
+            android:id="@+id/movie_evaluate"
+            android:textColor="#fff" />
+
+        <ImageView
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_below="@id/movie_evaluate"
+            android:src="@drawable/dianzan"
+            android:id="@+id/evaluate_dz"
+            />
+        <ImageView
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_below="@id/movie_evaluate"
+            android:src="@drawable/dianzan1"
+            android:visibility="invisible"
+            android:id="@+id/evaluate_dz1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pj_iv"
+            android:layout_marginRight="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_40"
+            android:text="6666"
+            android:textColor="#fff"
+            android:layout_alignParentRight="true"
+            android:id="@+id/pj_num"
+            />
+    </RelativeLayout>
+</RelativeLayout>

@@ -13,10 +13,26 @@
      >
 
  </android.support.v7.widget.RecyclerView>
-    <android.support.v7.widget.RecyclerView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rlv3"
-        android:background="#141931"
-        ></android.support.v7.widget.RecyclerView>
+        >
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rlv3"
+            android:background="#141931"
+            ></android.support.v7.widget.RecyclerView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#141931"
+            android:id="@+id/pb"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_20"
+            />
+    </RelativeLayout>
+
 </LinearLayout>

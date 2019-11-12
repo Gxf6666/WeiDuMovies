@@ -49,6 +49,7 @@ public class QuYuMAdapter extends RecyclerView.Adapter<QuYuMAdapter.MyViewHolder
             myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     isWork.SetId(list.get(i).regionId);
                 }
             });

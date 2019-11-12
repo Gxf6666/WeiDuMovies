@@ -2,6 +2,7 @@ package com.bawei.weidumovie.app;
 
 import com.bawei.weidumovie.model.bean.Banners;
 import com.bawei.weidumovie.model.bean.DetailsBean;
+import com.bawei.weidumovie.model.bean.Evaluate;
 import com.bawei.weidumovie.model.bean.Home;
 import com.bawei.weidumovie.model.bean.HomeOne;
 import com.bawei.weidumovie.model.bean.Information;
@@ -76,11 +77,18 @@ public interface Api {
     @GET("cinema/v2/findCinemaByRegion")
     Observable<Request<List<QuYuQuery>>>findCinemaByRegion(@Query("regionId")int regionId);
 
-
+    //查询影院详情
     @GET("cinema/v1/findCinemaInfo")
     Observable<Request<Information>>findCinemaInfo(@Query("cinemaId")int cinemaId);
 
    //查询电影详情
    @GET("movie/v2/findMoviesDetail")
    Observable<Request<DetailsBean>>findDetail(@Query("movieId")int movieId);
+
+   //查询影院评价
+   @GET("cinema/v1/findAllCinemaComment")
+   Observable<Request<List<Evaluate>>>findAllCinemaComment(@Query("cinemaId")int cinemaId,@Query("page")int page,@Query("count")int count);
+
+
+
 }
