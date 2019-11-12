@@ -3,7 +3,7 @@ package com.bawei.weidumovie.model.bean;
 创建人:郭学飞*/
 
 
-class MovieDirec {
+ public class MovieDirec {
     public  String name;
     public  String photo;
 }
