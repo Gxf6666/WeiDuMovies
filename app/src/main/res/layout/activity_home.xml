@@ -45,7 +45,6 @@
                     android:textSize="@dimen/sp_14" />
 
                 <com.kyle.radiogrouplib.NestedRadioLayout
-
                     android:id="@+id/rb_movies"
                     android:layout_width="@dimen/dp_20"
                     android:layout_height="@dimen/dp_20"

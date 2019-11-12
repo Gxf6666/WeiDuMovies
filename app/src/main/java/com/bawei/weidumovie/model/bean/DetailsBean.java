@@ -12,6 +12,20 @@ public class DetailsBean {
 
     public String duration;
     public String imageUrl;
-    public int commentNum;
+    public double commentNum;
     public List<MovieActor> movieActor;
+    public List<MovieDirec>movieDirector;
+    public int movieId;
+    public String movieType;
+    public String name;
+    public String placeOrigin;
+    public List<String>posterList;
+    public long  releaseTime;
+    public double  score;
+    public List<ShortFilm>shortFilmList;
+    public String summary;
+    public int  whetherFollow;
+    public String message;
+    public String status;
+
 }
