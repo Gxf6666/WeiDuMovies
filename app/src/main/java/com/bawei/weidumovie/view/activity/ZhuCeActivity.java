@@ -58,14 +58,17 @@ public class ZhuCeActivity extends BaseActivity {
         String Pwd = textPwd1.getText().toString();
         String yanzheng = textYz.getText().toString();
 
-        String Pwds = Base64.encode(Pwd.getBytes());
-        String Mm = EncryptUtil.encrypt(Pwds);
-
         SharedPreferences sp = getSharedPreferences("name", MODE_PRIVATE);
         edit = sp.edit();
         edit.putString("Email", Email);
         edit.putString("Mm", Pwd);
         edit.commit();
+
+
+        String Pwds = Base64.encode(Pwd.getBytes());
+        String Mm = EncryptUtil.encrypt(Pwds);
+
+
 
         registerPresenter.Request(Name, Mm, Email, yanzheng);
     }

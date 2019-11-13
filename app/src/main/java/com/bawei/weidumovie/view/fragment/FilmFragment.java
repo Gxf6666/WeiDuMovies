@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.baidu.location.BDLocationListener;
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.model.bean.Banners;
 import com.bawei.weidumovie.model.bean.Home;
@@ -29,11 +28,13 @@ import com.bawei.weidumovie.view.adpater.HomeMAdapter1;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter2;
 import com.bawei.weidumovie.view.consion.DataCall;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.stx.xhb.xbanner.XBanner;
+import com.stx.xhb.xbanner.transformers.Transformer;
 
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -61,8 +62,9 @@ public class FilmFragment extends Fragment {
     private HomePresenter1 homePresenter1;
     private HomePresenter2 homePresenter2;
     private HomeMAdapter2 homeMAdapter3;
-    private Boolean locationboolean=true;
+    private Boolean locationboolean = true;
     private BDLocationUtils bdLocationUtils;
+
 
     @Nullable
     @Override
@@ -73,14 +75,14 @@ public class FilmFragment extends Fragment {
         mLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (locationboolean){
-                   bdLocationUtils = new BDLocationUtils(getContext());
-                   bdLocationUtils.doLocation();
-                   bdLocationUtils.mLocationClient.start();
-                    locationboolean=false;
-                }else {
+                if (locationboolean) {
+                    bdLocationUtils = new BDLocationUtils(getContext());
+                    bdLocationUtils.doLocation();
+                    bdLocationUtils.mLocationClient.start();
+                    locationboolean = false;
+                } else {
                     bdLocationUtils.mLocationClient.stop();
-                    locationboolean=true;
+                    locationboolean = true;
                 }
             }
         });
@@ -135,7 +137,8 @@ public class FilmFragment extends Fragment {
         popularscore_tv = (TextView) view.findViewById(R.id.popularscore_tv);
         releasedmovie_bt = (Button) view.findViewById(R.id.releasedmovie_bt);
         recycler_remen = (RecyclerView) view.findViewById(R.id.recycler_remen);
-        mLocation=(TextView)view.findViewById(R.id.location);
+        mLocation = (TextView) view.findViewById(R.id.location);
+
     }
 
     @Override
@@ -143,8 +146,6 @@ public class FilmFragment extends Fragment {
         super.onDestroyView();
         unbinder.unbind();
     }
-
-
     private class BannersPresen implements DataCall<List<Banners>> {
         @Override
         public void Success(final List<Banners> data) {
@@ -153,10 +154,16 @@ public class FilmFragment extends Fragment {
             xbanner.setmAdapter(new XBanner.XBannerAdapter() {
                 @Override
                 public void loadBanner(XBanner banner, View view, int position) {
-                    Glide.with(getActivity()).load(data.get(position).imageUrl).into((ImageView) view);
+                    Glide.with(getActivity()).load(data.get(position).imageUrl)
+                            .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+                            .into((ImageView) view);
                 }
             });
+           // xbanner.setPageTransformer(Transformer.Default);
+            //xbanner.setPageTransformer(Transformer.Cube);
+            xbanner.setPageChangeDuration(1000);
         }
+
         @Override
         public void Error(Request request) {
 

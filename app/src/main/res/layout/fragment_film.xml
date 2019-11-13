@@ -7,7 +7,7 @@
     tools:context=".view.activity.HomeActivity"
     android:orientation="vertical"
     >
-    <LinearLayout
+    <RelativeLayout
         android:background="#141931"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +19,8 @@
             android:layout_height="wrap_content"
             app:srcCompat="@mipmap/icon_location"
             android:layout_marginLeft="@dimen/dp_26"
+            android:layout_centerVertical="true"
+            android:id="@+id/imager"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -27,8 +29,10 @@
             android:id="@+id/location"
             android:layout_marginLeft="@dimen/dp_12"
             android:layout_marginTop="@dimen/dp_36"
+            android:layout_toRightOf="@+id/imager"
             android:textColor="#fff"
             android:textSize="@dimen/dp_15"
+            android:layout_centerVertical="true"
             />
         <ImageView
             android:layout_marginTop="@dimen/dp_38"
@@ -37,8 +41,10 @@
             app:srcCompat="@mipmap/icon_search"
             android:layout_marginLeft="@dimen/dp_240"
             android:layout_marginRight="@dimen/dp_26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             />
-    </LinearLayout>
+    </RelativeLayout>
 <android.support.v4.widget.NestedScrollView
     android:background="#141931"
     android:layout_width="match_parent"
@@ -58,7 +64,7 @@
         android:layout_width="@dimen/dp_350"
         android:layout_gravity="center"
         android:id="@+id/xbanner"
-        android:layout_height="@dimen/dp_150"/>
+        android:layout_height="@dimen/dp_180"/>
 
 
 
@@ -87,10 +93,11 @@
           />
       <TextView
           android:layout_width="wrap_content"
-          android:layout_marginLeft="@dimen/dp_213"
+          android:layout_marginLeft="@dimen/dp_200"
           android:layout_gravity="center"
           android:text="更多"
           android:textColor="#fff"
+          android:id="@+id/film_More"
           android:layout_height="wrap_content"
           />
   </LinearLayout>
@@ -124,10 +131,11 @@
             />
         <TextView
             android:layout_width="wrap_content"
-            android:layout_marginLeft="@dimen/dp_213"
+            android:layout_marginLeft="@dimen/dp_200"
             android:layout_gravity="center"
             android:text="更多"
             android:textColor="#fff"
+            android:id="@+id/film_More1"
             android:layout_height="wrap_content"
             />
     </LinearLayout>
@@ -167,10 +175,11 @@
                 />
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="@dimen/dp_213"
+                android:layout_marginLeft="@dimen/dp_200"
                 android:layout_gravity="center"
                 android:text="更多"
                 android:textColor="#fff"
+                android:id="@+id/film_More2"
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
@@ -194,8 +203,8 @@
                 <Button
                     android:layout_width="@dimen/dp_50"
                     android:layout_height="@dimen/dp_20"
-                    android:background="#D60C51"
-                    android:text="购买"
+                    android:background="@drawable/translucent4"
+                    android:text="购票"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginRight="@dimen/dp_20"

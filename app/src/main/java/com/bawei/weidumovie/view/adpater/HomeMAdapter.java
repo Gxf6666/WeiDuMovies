@@ -73,7 +73,7 @@ public class HomeMAdapter extends RecyclerView.Adapter<HomeMAdapter.MyViewHolder
          TextView tv;
          ImageView iv;
          TextView score_tv;
-         Button hotmovie_bt;
+         TextView hotmovie_bt;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

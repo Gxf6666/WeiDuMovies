@@ -3,8 +3,11 @@
     android:layout_width="match_parent"
     android:layout_marginTop="@dimen/dp_20"
     android:layout_marginLeft="@dimen/dp_24"
+    android:layout_marginRight="@dimen/dp_24"
     android:orientation="horizontal"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#1c2243"
+    >
 
         <ImageView
             android:layout_width="@dimen/dp_100"
@@ -50,7 +53,7 @@
     >
     <Button
         android:layout_width="@dimen/dp_45"
-        android:background="#e8185e"
+        android:background="@drawable/translucent4"
         android:text="预约"
         android:layout_alignParentRight="true"
         android:textColor="#fff"
