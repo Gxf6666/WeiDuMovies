@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/dp_20"
+    android:layout_marginLeft="@dimen/dp_24"
+    android:layout_marginRight="@dimen/dp_24"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:background="#1c2243"
+    >
+
+        <ImageView
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_130"
+            android:id="@+id/more_iv"
+            />
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_marginLeft="@dimen/dp_130"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          >
+       <TextView
+          android:layout_marginTop="@dimen/dp_10"
+           android:textSize="@dimen/dp_15"
+          android:layout_width="wrap_content"
+           android:textColor="#fff"
+           android:text="666"
+          android:layout_height="wrap_content"
+          android:id="@+id/more_tv_name"
+          />
+          <TextView
+              android:layout_marginTop="@dimen/dp_10"
+              android:textSize="@dimen/dp_10"
+              android:textColor="#fff"
+              android:text="666"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/more_tv_daoyan"
+              />
+          <TextView
+              android:layout_marginTop="@dimen/dp_10"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="#fff"
+              android:text="5666"
+              android:textSize="@dimen/dp_9"
+              android:id="@+id/more_tv_zhuyan"
+              />
+
+      </LinearLayout>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <Button
+        android:layout_width="@dimen/dp_45"
+        android:background="@drawable/translucent4"
+        android:text="购票"
+        android:layout_alignParentRight="true"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dp_100"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/dp_20"
+        android:id="@+id/releasedmovie_bt"
+        android:layout_marginLeft="@dimen/dp_14"
+        />
+
+
+
+</RelativeLayout>
+
+</RelativeLayout>

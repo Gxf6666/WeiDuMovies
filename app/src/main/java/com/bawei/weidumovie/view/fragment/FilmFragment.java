@@ -1,5 +1,6 @@
 package com.bawei.weidumovie.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,6 +24,7 @@ import com.bawei.weidumovie.presenter.HomePresenter;
 import com.bawei.weidumovie.presenter.HomePresenter1;
 import com.bawei.weidumovie.presenter.HomePresenter2;
 import com.bawei.weidumovie.testlocation.BDLocationUtils;
+import com.bawei.weidumovie.view.activity.MoreActivity;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter1;
 import com.bawei.weidumovie.view.adpater.HomeMAdapter2;
@@ -31,7 +33,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.stx.xhb.xbanner.XBanner;
-import com.stx.xhb.xbanner.transformers.Transformer;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ import butterknife.Unbinder;
  * <p>创建时间：2019/11/7<p>
  * <p>更改时间：2019/11/7<p>
  */
-public class FilmFragment extends Fragment {
+public class FilmFragment extends Fragment implements View.OnClickListener {
     TextView mLocation;
     Unbinder unbinder;
     private XBanner xbanner;
@@ -64,6 +65,9 @@ public class FilmFragment extends Fragment {
     private HomeMAdapter2 homeMAdapter3;
     private Boolean locationboolean = true;
     private BDLocationUtils bdLocationUtils;
+    private TextView film_More;
+    private TextView film_More1;
+    private TextView film_More2;
 
 
     @Nullable
@@ -139,6 +143,12 @@ public class FilmFragment extends Fragment {
         recycler_remen = (RecyclerView) view.findViewById(R.id.recycler_remen);
         mLocation = (TextView) view.findViewById(R.id.location);
 
+        film_More = (TextView) view.findViewById(R.id.film_More);
+        film_More.setOnClickListener(this);
+        film_More1 = (TextView) view.findViewById(R.id.film_More1);
+        film_More1.setOnClickListener(this);
+        film_More2 = (TextView) view.findViewById(R.id.film_More2);
+        film_More2.setOnClickListener(this);
     }
 
     @Override
@@ -146,6 +156,25 @@ public class FilmFragment extends Fragment {
         super.onDestroyView();
         unbinder.unbind();
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.film_More:
+                Intent intent = new Intent(getContext(), MoreActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.film_More1:
+                Intent intent1 = new Intent(getContext(), MoreActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.film_More2:
+                Intent intent2 = new Intent(getContext(), MoreActivity.class);
+                startActivity(intent2);
+                break;
+        }
+    }
+
     private class BannersPresen implements DataCall<List<Banners>> {
         @Override
         public void Success(final List<Banners> data) {
@@ -159,7 +188,7 @@ public class FilmFragment extends Fragment {
                             .into((ImageView) view);
                 }
             });
-           // xbanner.setPageTransformer(Transformer.Default);
+            // xbanner.setPageTransformer(Transformer.Default);
             //xbanner.setPageTransformer(Transformer.Cube);
             xbanner.setPageChangeDuration(1000);
         }
