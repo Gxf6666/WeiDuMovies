@@ -1,6 +1,7 @@
 package com.bawei.weidumovie.view.adpater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.model.bean.HomeOne;
+import com.bawei.weidumovie.view.activity.MovieDetailsActivity;
 import com.bumptech.glide.Glide;
 
 import java.text.SimpleDateFormat;
@@ -47,13 +49,21 @@ public class HomeMAdapter1 extends RecyclerView.Adapter<HomeMAdapter1.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder,final int i) {
         Glide.with(context).load(list.get(i).imageUrl).into(myViewHolder.iv);
         myViewHolder.releasedmovie_tv_name.setText(list.get(i).name);
         SimpleDateFormat format = new SimpleDateFormat("yyyy" + "年" + "MM" + "月" + "dd" + "日上映");
         String Time = format.format(list.get(i).releaseTime);
         myViewHolder.releasedmovie_tv_time.setText(Time);
         myViewHolder.releasedmovie_tv_usernum.setText(list.get(i).wantSeeNum+"");
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                intent.putExtra("movieid",list.get(i).movieId);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

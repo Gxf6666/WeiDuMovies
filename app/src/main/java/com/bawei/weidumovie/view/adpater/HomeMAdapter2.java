@@ -1,6 +1,7 @@
 package com.bawei.weidumovie.view.adpater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.bawei.weidumovie.R;
 import com.bawei.weidumovie.model.bean.Home;
+import com.bawei.weidumovie.view.activity.MovieDetailsActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -45,8 +47,16 @@ public class HomeMAdapter2 extends RecyclerView.Adapter<HomeMAdapter2.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder,final int i) {
         Glide.with(context).load(list.get(i).horizontalImage).into(myViewHolder.iv);
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                intent.putExtra("movieid",list.get(i).movieId);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.bawei.weidumovie.model.bean.Home;
 import com.bawei.weidumovie.model.bean.HomeOne;
 import com.bawei.weidumovie.model.bean.Information;
 import com.bawei.weidumovie.model.bean.Logins;
+import com.bawei.weidumovie.model.bean.MovieFocusBean;
 import com.bawei.weidumovie.model.bean.Nearby;
 import com.bawei.weidumovie.model.bean.QuYu;
 import com.bawei.weidumovie.model.bean.QuYuQuery;
@@ -19,6 +20,7 @@ import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -90,5 +92,12 @@ public interface Api {
    Observable<Request<List<Evaluate>>>findAllCinemaComment(@Query("cinemaId")int cinemaId,@Query("page")int page,@Query("count")int count);
 
 
+    //关注电影
+    @GET("movie/v1/verify/followMovie")
+    Observable<Request<MovieFocusBean>>focusmovie(@Header("userId") int userId, @Header("sessionId")String sessionId, @Query("movieId")int movieId);
 
+
+    //取消关注电影
+    @GET("movie/v1/verify/cancelFollowMovie")
+    Observable<Request<MovieFocusBean>>cancelfocusmovie(@Header("userId") int userId, @Header("sessionId")String sessionId, @Query("movieId")int movieId);
 }
